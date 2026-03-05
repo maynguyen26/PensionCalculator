@@ -1,0 +1,6 @@
+@PensionCalculator_HostAddress = http://localhost:5269
+
+GET {{PensionCalculator_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
