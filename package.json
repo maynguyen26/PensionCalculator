@@ -1,0 +1,13 @@
+{
+  "name": "pensioncalculator",
+  "version": "1.0.0",
+  "description": "A RESTful API built with ASP.NET Core and SQL Server for estimating monthly pension payouts based on salary, contribution rate, and years of service. Built to demonstrate .NET development, OOP design patterns, and SQL Server integration.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cd backend && dotnet run & cd frontend && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

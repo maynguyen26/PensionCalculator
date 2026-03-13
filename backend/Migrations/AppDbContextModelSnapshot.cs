@@ -63,7 +63,7 @@ namespace PensionCalculator.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("PensionCalculator.Models.PensionCalculation", b =>
@@ -96,7 +96,7 @@ namespace PensionCalculator.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("PensionCalculations");
+                    b.ToTable("PensionCalculations", (string)null);
                 });
 
             modelBuilder.Entity("PensionCalculator.Models.PensionCalculation", b =>
