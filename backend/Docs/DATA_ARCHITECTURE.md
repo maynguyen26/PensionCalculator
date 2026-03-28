@@ -107,3 +107,34 @@ If the container already exists but is stopped:
 ```bash
 docker start pension-sqlserver
 ```
+
+## Frontend Integration
+
+### API URL Configuration
+The frontend uses an environment variable for the API base URL:
+- Development: `http://localhost:5269`
+- Production: `https://api.westgatepension.may-nguyen.ca`
+
+### CORS Policy
+Currently configured to allow requests from `http://localhost:5173`.
+In production this must be updated to the deployed frontend domain:
+```csharp
+policy.WithOrigins("https://westgatepension.may-nguyen.ca")
+```
+
+### Circular Reference Prevention
+The one-to-many relationship between Employee and PensionCalculation
+creates a circular reference when serializing to JSON:
+```
+Employee → PensionCalculations → Employee → PensionCalculations → ...
+```
+This is resolved by marking the Employee navigation property on
+PensionCalculation with [JsonIgnore] and making it nullable (Employee?)
+to prevent model validation errors. The production solution would be
+DTOs that explicitly define response shapes without navigation properties.
+
+### Demo Environment
+Seed data provides realistic demo accounts for portfolio demonstration.
+All accounts use Password123! for simplicity. In a real production
+system passwords would meet complexity requirements and be changed
+on first login.

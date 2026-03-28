@@ -13,6 +13,7 @@ patterns, layered architecture, and SQL Server integration.
 - Microsoft SQL Server (Docker)
 - JWT Authentication with BCrypt password hashing
 - Scalar API documentation
+- Rate limiting ready (built into .NET 7+)
 
 ## Project Structure
 ```
@@ -134,6 +135,20 @@ Authorization: Bearer <your-token>
 
 Tokens expire after 24 hours. Employees can only access their own
 data — EmployeeId is read from the token, not from the request.
+
+## Known Design Decisions
+
+**Nullable navigation property** — `Employee?` on `PensionCalculation` is
+nullable to prevent .NET model validation from requiring it in the request
+body. The controller sets `EmployeeId` from the JWT token so the navigation
+property is never needed in incoming requests.
+
+**[JsonIgnore] on Employee navigation property** — prevents circular
+reference errors during JSON serialization. See DATA_ARCHITECTURE.md
+for full details.
+
+**CORS configured for localhost:5173** — in production update to your
+deployed frontend domain.
 
 ## Data Architecture
 See [Docs/DATA_ARCHITECTURE.md](Docs/DATA_ARCHITECTURE.md) for full
