@@ -20,19 +20,21 @@ export default function EmployeeDashboard() {
     <div className="min-h-screen bg-brand-bg">
       <Navbar name={employee.name} role={employee.role} />
 
-      <div className="max-w-5xl mx-auto px-10 py-10">
-        <div className="mb-10">
-          <h1 className="font-serif text-4xl text-brand-navy">
+      <div className="max-w-5xl mx-auto px-6 md:px-10 py-8 md:py-10">
+        <div className="mb-8 md:mb-10">
+          <h1 className="font-serif text-3xl md:text-4xl text-brand-navy">
             Good morning, <em className="text-brand-gold">{employee.name.split(' ')[0]}.</em>
           </h1>
-          <p className="text-gray-400 mt-2">{employee.department} · {yearsOfService} years of service</p>
+          <p className="text-gray-400 mt-2 text-sm md:text-base">
+            {employee.department} · {yearsOfService} years of service
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <Card title="Estimated Monthly Pension">
             <div className="text-center py-4">
-              <div className="font-serif text-6xl text-brand-navy tracking-tight">
-                <span className="text-3xl text-brand-gold">$</span>
+              <div className="font-serif text-5xl md:text-6xl text-brand-navy tracking-tight">
+                <span className="text-2xl md:text-3xl text-brand-gold">$</span>
                 {latest ? latest.estimatedMonthlyPension.toLocaleString() : '—'}
               </div>
               <p className="text-gray-400 text-sm mt-2">per month at retirement</p>
@@ -49,7 +51,7 @@ export default function EmployeeDashboard() {
           </Card>
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <PensionForm onCalculated={refetch} />
           <CalculationHistory calculations={employee.pensionCalculations} />
         </div>

@@ -8,7 +8,7 @@ namespace PensionCalculator.Models
         public int EmployeeId { get; set; }
 
         [JsonIgnore]
-        public Employee Employee { get; set; } = null!;
+        public Employee? Employee { get; set; }
 
         public decimal AnnualSalary { get; set; }
         public decimal ContributionPercentage { get; set; }

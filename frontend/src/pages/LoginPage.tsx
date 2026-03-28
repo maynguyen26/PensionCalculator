@@ -37,9 +37,9 @@ export default function LoginPage() {
   ]
 
   return (
-    <div className="grid grid-cols-2 min-h-screen">
-      {/* Left Panel */}
-      <div className="bg-brand-navy p-16 flex flex-col justify-between">
+    <div className="min-h-screen md:grid md:grid-cols-2">
+      {/* Left Panel — hidden on mobile */}
+      <div className="hidden md:flex bg-brand-navy p-16 flex-col justify-between">
         <div className="font-serif text-2xl text-brand-gold">Westgate Pension</div>
         <div>
           <div className="font-serif text-5xl text-white leading-tight">
@@ -54,8 +54,12 @@ export default function LoginPage() {
       </div>
 
       {/* Right Panel */}
-      <div className="bg-brand-bg flex items-center justify-center p-16">
+      <div className="min-h-screen bg-brand-bg flex items-center justify-center p-8 md:p-16">
         <div className="w-full max-w-sm">
+          {/* Mobile brand — only shown on mobile */}
+          <div className="md:hidden font-serif text-2xl text-brand-navy mb-8">
+            Westgate Pension
+          </div>
           <h1 className="font-serif text-3xl text-brand-navy mb-2">Welcome back</h1>
           <p className="text-gray-500 text-sm mb-8">Sign in to access your pension portal</p>
 
@@ -71,13 +75,19 @@ export default function LoginPage() {
             />
           ))}
 
-          {error && (
-            <p className="text-red-500 text-sm mb-4">{error}</p>
-          )}
+          {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
           <Button onClick={handleLogin} disabled={loading} fullWidth>
             {loading ? 'Signing in...' : 'Sign in'}
           </Button>
+
+          {/* Demo credentials hint */}
+          <div className="mt-8 p-4 bg-white rounded-lg border border-brand-card text-xs text-gray-500">
+            <div className="font-semibold text-gray-600 mb-2">Demo credentials</div>
+            <div>Admin: admin@westgate-pension.ca</div>
+            <div>Employee: may.nguyen@westgate-pension.ca</div>
+            <div className="mt-1">Password: Password123!</div>
+          </div>
         </div>
       </div>
     </div>
