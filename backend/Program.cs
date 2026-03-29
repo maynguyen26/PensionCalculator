@@ -81,8 +81,20 @@ using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider
         .GetRequiredService<AppDbContext>();
-    await context.Database.MigrateAsync();
-    await SeedData.InitializeAsync(context);
+    
+    try
+    {
+        Console.WriteLine("Running migrations...");
+        await context.Database.MigrateAsync();
+        Console.WriteLine("Migrations complete.");
+        await SeedData.InitializeAsync(context);
+        Console.WriteLine("Seed data complete.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Startup error: {ex.Message}");
+        throw;
+    }
 }
 
 app.Run();
