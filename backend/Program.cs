@@ -73,10 +73,16 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 // inject seed data on startup
+
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider
         .GetRequiredService<AppDbContext>();
+    
+    // Auto-run migrations on startup
+    context.Database.Migrate();
+    
+    // Seed data
     await SeedData.InitializeAsync(context);
 }
 
