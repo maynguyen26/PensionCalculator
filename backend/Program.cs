@@ -54,9 +54,13 @@ builder.Services.AddOpenApi(options =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
-        policy.WithOrigins("http://localhost:5173")
-              .AllowAnyHeader()
-              .AllowAnyMethod());
+        policy.WithOrigins(
+            "http://localhost:5173",
+            "https://westgatepension.may-nguyen.ca",
+            "https://thankful-ground-0b8c6bc10.6.azurestaticapps.net"
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod());
 });
 
 var app = builder.Build();
@@ -72,17 +76,12 @@ app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-// inject seed data on startup
 
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider
         .GetRequiredService<AppDbContext>();
-    
-    // Auto-run migrations on startup
-    context.Database.Migrate();
-    
-    // Seed data
+    await context.Database.MigrateAsync();
     await SeedData.InitializeAsync(context);
 }
 
