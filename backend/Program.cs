@@ -65,10 +65,12 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+app.MapOpenApi();
+app.MapScalarApiReference();
+
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
-    app.MapScalarApiReference();
+    // Development-specific configuration can go here
 }
 
 app.UseHttpsRedirection();
