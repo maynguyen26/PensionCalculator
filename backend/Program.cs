@@ -57,7 +57,7 @@ builder.Services.AddCors(options =>
         policy.WithOrigins(
             "http://localhost:5173",
             "https://westgatepension.may-nguyen.ca",
-            "https://thankful-ground-0b8c6bc10.6.azurestaticapps.net"
+            "https://wonderful-field-0eeeaf00f.6.azurestaticapps.net"
         )
         .AllowAnyHeader()
         .AllowAnyMethod());
