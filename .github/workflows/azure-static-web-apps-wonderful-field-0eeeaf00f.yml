@@ -28,7 +28,7 @@ jobs:
           api_location: ""
           output_location: "dist"
         env:
-          VITE_API_URL: https://pension-calculator-api-dhbjcfgpdjaxbbeb.canadacentral-01.azurewebsites.net
+          VITE_API_URL: https://api.westgatepension.may-nguyen.ca
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
