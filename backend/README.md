@@ -96,11 +96,11 @@ employees with calculation history.
 |-------|----------|------|
 | admin@westgate-pension.ca | Password123! | Admin |
 | may.nguyen@westgate-pension.ca | Password123! | Employee |
-| james.tran@westgate-pension.ca | Password123! | Employee |
-| sarah.mitchell@westgate-pension.ca | Password123! | Employee |
-| david.chen@westgate-pension.ca | Password123! | Employee |
-| priya.sharma@westgate-pension.ca | Password123! | Employee |
-| tom.kowalski@westgate-pension.ca | Password123! | Employee |
+| matthew.page@westgate-pension.ca | Password123! | Employee |
+| maria.lukic@westgate-pension.ca | Password123! | Employee |
+| jack.park@westgate-pension.ca | Password123! | Employee |
+| randy.chhoa@westgate-pension.ca | Password123! | Employee |
+| samantha.mok@westgate-pension.ca | Password123! | Employee |
 
 ## API Endpoints
 

@@ -116,11 +116,7 @@ The frontend uses an environment variable for the API base URL:
 - Production: `https://api.westgatepension.may-nguyen.ca`
 
 ### CORS Policy
-Currently configured to allow requests from `http://localhost:5173`.
-In production this must be updated to the deployed frontend domain:
-```csharp
-policy.WithOrigins("https://westgatepension.may-nguyen.ca")
-```
+Configured to allow requests from localhost:5173 (development) and westgatepension.may-nguyen.ca (production).
 
 ### Circular Reference Prevention
 The one-to-many relationship between Employee and PensionCalculation

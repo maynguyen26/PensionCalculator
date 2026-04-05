@@ -6,12 +6,12 @@ their pension, and an admin portal for organization-wide oversight.
 Fully mobile responsive.
 
 ## Tech Stack
-- React 18
+- React 19
 - TypeScript
 - Vite
 - Tailwind CSS v4
 - Axios (HTTP client with JWT interceptor)
-- React Router v6
+- React Router v7
 
 ## Project Structure
 ```
@@ -90,13 +90,6 @@ The app will be available at `http://localhost:5173`.
 For production, set the API URL via environment variable:
 ```
 VITE_API_URL=https://api.westgatepension.may-nguyen.ca
-```
-
-Update `src/services/api.ts` to use the environment variable:
-```typescript
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5269',
-})
 ```
 
 ## Authentication Flow
